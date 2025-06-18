@@ -1,0 +1,985 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding-top: 70px;
+
+    /* Sesuaikan dengan tinggi navbar */
+
+    background-color: #f4f7f6;
+
+    color: #333;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 100vh;
+}
+
+/* --- Navbar Styling --- */
+
+.dashboard-navbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    background-color: #333;
+
+    color: #f8f9fa;
+
+    position: fixed;
+
+    top: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+.dashboard-navbar .navbar-brand a {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: #f8f9fa;
+
+    text-decoration: none;
+
+}
+
+
+
+.dashboard-navbar .navbar-center-menu ul {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+    display: flex;
+
+    gap: 3%px;
+
+    /* Jarak antar item menu */
+
+}
+
+
+
+.dashboard-navbar .navbar-center-menu ul li a {
+
+    color: #f8f9fa;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    padding: 5px 10px;
+
+    border-radius: 5px;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+
+
+.dashboard-navbar .navbar-center-menu ul li a:hover {
+
+    background-color: #007bff;
+
+    color: white;
+
+}
+
+
+
+/* --- Dropdown Profil --- */
+
+.profile-dropdown {
+
+    position: relative;
+
+    padding-right: 2%;
+
+    cursor: pointer;
+
+}
+
+.profile-dropdown .profile-icon {
+
+    font-size: 24px;
+
+    color: #f8f9fa;
+
+    /* Ini adalah warna putih, seharusnya terlihat di background gelap */
+
+    padding: 5px;
+
+}
+
+
+
+.profile-dropdown .dropdown-menu {
+
+    display: none;
+
+    /* Sembunyikan secara default */
+
+    position: absolute;
+
+    top: 100%;
+
+    /* Di bawah ikon */
+
+    right: 0;
+
+    /* Rata kanan dengan ikon */
+
+    background-color: #ffffff;
+
+    min-width: 160px;
+
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+    z-index: 1001;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    /* Pastikan border-radius diterapkan */
+
+    margin-top: 10px;
+    margin-right: 15px;
+
+    /* Jarak dari ikon */
+
+}
+
+
+
+.profile-dropdown .dropdown-menu a {
+
+    color: #333;
+
+    padding: 12px 16px;
+
+    text-decoration: none;
+
+    display: block;
+
+    text-align: left;
+
+    font-size: 15px;
+
+    transition: background-color 0.3s ease;
+
+}
+
+.profile-dropdown .dropdown-menu .profile-name {
+    cursor: default;
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+    border-bottom: black 1px solid;
+}
+
+.profile-dropdown .dropdown-menu a:hover {
+
+    background-color: #f1f1f1;
+    box-shadow: inset 0 0 5px rgb(0, 0, 0);
+}
+
+
+
+.profile-dropdown .dropdown-menu .logout-button {
+
+    background-color: transparent;
+
+    /* Sesuaikan atau hapus jika mau tombol merah */
+
+    border: none;
+
+    width: 100%;
+
+    text-align: left;
+
+    padding: 12px 16px;
+
+    font-size: 15px;
+
+    color: #333;
+
+    /* Warna teks default */
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+
+
+.profile-dropdown .dropdown-menu .logout-button:hover {
+
+    box-shadow: inset 0 0 5px rgb(255, 0, 0);
+}
+
+
+
+/* Tampilkan dropdown saat profile-dropdown di-hover (atau di-klik dengan JS) */
+
+.profile-dropdown.active .dropdown-menu {
+    display: block;
+}
+
+
+
+/* --- Konten Dashboard --- */
+
+.dashboard-container {
+
+    max-width: 900px;
+
+    margin: 40px auto;
+
+    background-color: #ffffff;
+
+    padding: 30px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+
+}
+
+
+
+.dashboard-header {
+
+    color: #007bff;
+
+    margin-bottom: 25px;
+
+    font-size: 32px;
+
+}
+
+
+
+.welcome-message {
+
+    font-size: 18px;
+
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* Dashboard nav lama bisa dihapus atau dipertahankan jika ada menu lain */
+
+.dashboard-nav {
+
+    margin-top: 30px;
+
+    border-top: 1px solid #eee;
+
+    padding-top: 20px;
+
+}
+
+
+
+.dashboard-nav ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.dashboard-nav ul li a {
+
+    background-color: #007bff;
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+.dashboard-nav ul li a:hover {
+
+    background-color: #0056b3;
+
+}
+
+/* kota */
+/* Kontainer Utama */
+.location-cards-container {
+    position: relative;
+    /* Penting untuk posisi tombol navigasi */
+    width: 100%;
+    max-width: 1200px;
+    /* Batasi lebar maksimum */
+    display: flex;
+    justify-content: center;
+    /* Untuk menempatkan wrapper di tengah jika tidak memenuhi max-width */
+    overflow: hidden;
+    /* Sembunyikan overflow jika wrapper akan digeser */
+    padding: 0 40px;
+    /* Ruang untuk tombol navigasi */
+}
+
+/* Pembungkus Kartu */
+.location-cards-wrapper {
+    display: flex;
+    gap: 20px;
+    /* Jarak antar kartu */
+    overflow-x: auto;
+    /* Mengizinkan gulir horizontal jika kartu terlalu banyak */
+    padding-bottom: 10px;
+    /* Ruang untuk scrollbar jika muncul (bisa disembunyikan dengan JS/CSS khusus) */
+    scroll-snap-type: x mandatory;
+    /* Opsional: untuk efek snapping saat menggulir */
+    -webkit-overflow-scrolling: touch;
+    /* Untuk gulir yang lebih halus di iOS */
+
+    /* Sembunyikan scrollbar bawaan (opsional, seperti yang dibahas sebelumnya) */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.location-cards-wrapper::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera*/
+}
+
+
+/* Styling Setiap Kartu */
+.location-card {
+    flex: 0 0 auto;
+    /* Penting: mencegah kartu menyusut atau melar */
+    width: 250px;
+    /* Lebar kartu tetap, sesuaikan */
+    background-color: #fff;
+    border-radius: 12px;
+    /* Border radius sesuai gambar */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Bayangan */
+    overflow: hidden;
+    /* Pastikan gambar tidak keluar dari radius */
+    scroll-snap-align: start;
+    /* Untuk scroll-snap-type */
+}
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    /* Tinggi gambar, sesuaikan */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Penting untuk menjaga rasio aspek gambar */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.location-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.hotel-count {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.average-price {
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #007bff;
+    /* Warna biru untuk harga */
+}
+
+.average-price .rate-text {
+    font-size: 0.75em;
+    font-weight: normal;
+    color: #888;
+}
+
+.location-cards-wrapper a.location-card-link {
+    text-decoration: none;
+    /* Hilangkan garis bawah pada link */
+    color: inherit;
+    /* Pastikan warna teks di dalam kartu tidak berubah */
+    display: block;
+    /* Agar link bisa membungkus div dengan benar dan mengambil lebar penuh */
+    /* Tambahkan margin-right jika Anda menggunakan gap pada wrapper */
+    margin-right: 20px;
+    /* Sesuaikan dengan 'gap' di .location-cards-wrapper */
+    flex: 0 0 auto;
+    /* Penting, sama seperti di .location-card */
+    width: 250px;
+    /* Lebar kartu, sesuaikan */
+}
+
+/* Jika Anda ingin efek hover pada seluruh kartu */
+.location-cards-wrapper a.location-card-link:hover .location-card {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    /* Efek bayangan lebih tebal saat hover */
+    transform: translateY(-3px);
+    /* Sedikit naik saat hover */
+    transition: all 0.3s ease-in-out;
+    /* Transisi halus */
+}
+
+/* Navigasi Tombol */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #555;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    z-index: 10;
+    /* Pastikan di atas kartu */
+}
+
+.nav-button:hover {
+    background-color: #e0e0e0;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.next-button {
+    right: 0;
+    /* Posisikan di kanan */
+}
+
+.prev-button {
+    left: 0;
+    /* Posisikan di kiri */
+}
+
+/* Hotel */
+/* General container (if not using Bootstrap's .container) */
+.main-container {
+    /* Nama kelas baru untuk container utama halaman */
+    width: 100%;
+    max-width: 1200px;
+    /* Lebar maksimum yang Anda inginkan */
+    margin: 0 auto;
+    /* Pusatkan container */
+    padding: 20px;
+    /* Padding agar konten tidak menempel tepi */
+}
+
+/* Container untuk daftar hotel (menggantikan .kontener-hotel) */
+.hotel-list-grid {
+    display: grid;
+    /* Menggunakan Grid Layout */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* Kolom responsif */
+    gap: 20px;
+    /* Jarak antar kartu hotel */
+    margin-top: 30px;
+}
+
+/* Setiap kartu hotel (menggantikan .hotel) */
+.hotel-card {
+    /* Nama kelas baru untuk setiap kartu hotel */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    /* Nilai konkret, bukan variabel */
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    /* Nilai konkret, bukan variabel */
+    border-radius: 0.5rem;
+    /* Nilai konkret, sekitar 8px */
+    overflow: hidden;
+    /* Penting untuk radius gambar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Tambahkan shadow untuk efek card */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Transisi untuk hover */
+}
+
+.hotel-card:hover {
+    transform: translateY(-5px);
+    /* Efek naik saat hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Shadow lebih kuat saat hover */
+}
+
+.hotel-card .hotel-image {
+    width: 100%;
+    height: 200px;
+    /* Tinggi gambar yang konsisten */
+    overflow: hidden;
+    /* Pastikan gambar tidak keluar dari container */
+}
+
+.hotel-card .hotel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Pastikan gambar mengisi area tanpa terdistorsi */
+    display: block;
+    /* Menghilangkan spasi ekstra di bawah gambar */
+}
+
+/* Konten di dalam kartu hotel (menggantikan .hotel-details atau .hotel) */
+.hotel-card-body {
+    /* Nama kelas baru untuk konten di dalam kartu */
+    flex: 1 1 auto;
+    padding: 1rem;
+    /* Padding internal, nilai konkret */
+    color: #333;
+    /* Warna teks umum */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Untuk mendorong tombol ke bawah jika ada */
+}
+
+.hotel-card-body .hotel-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #007bff;
+    /* Warna judul */
+}
+
+.hotel-card-body .hotel-location {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.hotel-card-body .hotel-rating {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 0.8rem;
+}
+
+.hotel-card-body .hotel-fasilitas,
+.hotel-card-body .hotel-tentang {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+
+/* Tombol atau link detail di card */
+.hotel-card-body .btn-detail {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    margin-top: 10px;
+    align-self: flex-start;
+    /* Untuk flexbox agar tidak mengambil lebar penuh */
+    transition: background-color 0.2s ease;
+}
+
+.hotel-card-body .btn-pesan {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: green;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    margin-top: 10px;
+    align-self: flex-start;
+    /* Untuk flexbox agar tidak mengambil lebar penuh */
+    transition: background-color 0.2s ease;
+}
+
+.hotel-card-body .btn-detail:hover {
+    background-color: #0056b3;
+}
+
+/* Dashboard Container (jika relevan untuk halaman ini) */
+.dashboard-container {
+    width: 100%;
+    max-width: 800px;
+    /* Sesuaikan kebutuhan container your dashboard */
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+}
+
+.heading {
+    color: #00aaff;
+    margin-bottom: 20px;
+}
+
+.subseading {
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.subseading span {
+    color: #223;
+    font-weight: bold;
+}
+
+.content {
+    color: #777;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Styling untuk Location Cards di Dashboard (jika Anda ingin styling ini tetap) */
+.location-cards-container {
+    overflow-x: auto;
+    /* Untuk scroll horizontal jika terlalu banyak kartu */
+    padding-bottom: 10px;
+    /* Ruang untuk scrollbar */
+}
+
+.location-cards-wrapper {
+    display: flex;
+    /* Menggunakan flexbox untuk tata letak horizontal */
+    gap: 20px;
+    /* Jarak antar kartu */
+    padding: 20px 0;
+    justify-content: center;
+    /* Pusatkan kartu jika tidak memenuhi lebar */
+}
+
+a.location-card-link {
+    text-decoration: none;
+    /* Hilangkan garis bawah pada link */
+    color: inherit;
+    /* Pastikan warna teks di dalam kartu tidak berubah */
+    display: block;
+    /* Agar link bisa membungkus div dengan benar */
+    flex-shrink: 0;
+    /* Mencegah kartu menyusut */
+}
+
+.location-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 250px;
+    /* Lebar tetap untuk setiap kartu kota */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    /* Efek naik saat hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    /* Efek bayangan lebih tebal */
+}
+
+.location-card .card-image {
+    height: 150px;
+    /* Tinggi gambar kota */
+    overflow: hidden;
+}
+
+.location-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.location-card .card-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.location-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.hotel-count {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.average-price {
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.average-price .rate-text {
+    font-size: 0.75em;
+    font-weight: normal;
+    color: #888;
+}
+
+/* kamar */
+.container-span-hotele {
+    width: 80%;
+    margin: 40px auto;
+
+    background-color: #ffffff;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    text-align: left;
+
+}
+
+.kamar-header {
+    color: #007bff;
+    margin-bottom: 25px;
+    font-size: 32px;
+    margin-top: 5px;
+}
+
+/* pesan */
+/* --- Styling Khusus Form Pemesanan Kamar --- */
+
+/* Gaya dasar untuk "kertu" (card) */
+.kertu {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* Penting untuk radius jika ada gambar atau elemen lain di dalamnya */
+    margin-bottom: 20px;
+    /* Memberi sedikit jarak antar kartu jika ada beberapa */
+}
+
+/* Gaya untuk "awak-kertu" (card-body) */
+.awak-kertu {
+    padding: 20px;
+    /* Memberikan ruang di dalam card */
+}
+
+/* Gaya spesifik untuk kartu form pemesanan kamar */
+/* Gunakan kelas ini untuk container utama form pemesanan di kamar.blade.php */
+.kamar-pemesanan-kertu {
+    max-width: 600px;
+    /* Batasi lebar kartu form */
+    margin: 40px auto;
+    /* Pusatkan kartu di halaman */
+    border: 1px solid #eee;
+    /* Tambahkan border tipis untuk definisi */
+    background-color: #f9f9f9;
+    /* Latar belakang sedikit berbeda dari kertu umum */
+}
+
+/* Gaya untuk judul di dalam form pemesanan */
+.kamar-pemesanan-kertu h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    /* Pusatkan judul form */
+}
+
+/* Gaya untuk setiap grup input (label + input) */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Gaya untuk label dari setiap input */
+.form-group label {
+    display: block;
+    /* Membuat label berada di baris terpisah */
+    margin-bottom: 5px;
+    /* Jarak antara label dan input */
+    font-weight: bold;
+    /* Membuat teks label tebal */
+    color: #555;
+    /* Warna teks label */
+}
+
+/* Gaya untuk elemen input text, date, dan number */
+.form-control {
+    width: 100%;
+    /* Lebar input memenuhi container */
+    padding: 10px;
+    /* Padding di dalam input */
+    border: 1px solid #ccc;
+    /* Border abu-abu */
+    border-radius: 5px;
+    /* Sudut membulat */
+    box-sizing: border-box;
+    /* Pastikan padding tidak menambah lebar total elemen */
+    font-size: 1em;
+    /* Ukuran font standar */
+    transition: border-color 0.3s ease;
+    /* Transisi halus untuk border saat fokus */
+}
+
+/* Gaya saat input sedang fokus (diklik/diisi) */
+.form-control:focus {
+    border-color: #007bff;
+    /* Warna border biru saat fokus */
+    outline: none;
+    /* Hilangkan outline default browser */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    /* Efek bayangan saat fokus */
+}
+
+/* Gaya untuk pesan error validasi di bawah input */
+.error-message {
+    color: #dc3545;
+    /* Warna merah untuk pesan error */
+    font-size: 0.85em;
+    /* Ukuran font lebih kecil */
+    margin-top: 5px;
+    /* Jarak dari input ke pesan error */
+}
+
+/* Gaya untuk tombol utama (misalnya tombol "Pesan Kamar Ini") */
+.btn.btn-primary {
+    background-color: #007bff;
+    /* Latar belakang biru */
+    color: white;
+    /* Warna teks putih */
+    padding: 10px 20px;
+    /* Padding tombol */
+    border: none;
+    /* Tanpa border */
+    border-radius: 5px;
+    /* Sudut membulat */
+    cursor: pointer;
+    /* Kursor berubah menjadi pointer */
+    font-size: 16px;
+    /* Ukuran font */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Transisi hover */
+    margin-top: 20px;
+    /* Jarak dari elemen sebelumnya */
+    display: inline-block;
+    /* Agar padding dan lebar berfungsi dengan baik */
+    text-align: center;
+    /* Pastikan teks di tengah tombol */
+}
+
+/* Gaya saat tombol utama di-hover */
+.btn.btn-primary:hover {
+    background-color: #0056b3;
+    /* Warna biru lebih gelap saat hover */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    /* Bayangan sedikit lebih tebal */
+}
+
+/* Gaya untuk tombol disabled (misalnya "Kamar Tidak Tersedia") */
+.btn.btn-secondary {
+    background-color: #6c757d;
+    /* Latar belakang abu-abu */
+    color: white;
+    /* Warna teks putih */
+    padding: 10px 20px;
+    /* Padding tombol */
+    border: none;
+    /* Tanpa border */
+    border-radius: 5px;
+    /* Sudut membulat */
+    cursor: not-allowed;
+    /* Kursor "tidak diizinkan" */
+    font-size: 16px;
+    /* Ukuran font */
+    margin-top: 20px;
+    /* Jarak dari elemen sebelumnya */
+    display: inline-block;
+    text-align: center;
+}
+
+/* Gaya untuk pesan "Maaf, kamar ini tidak tersedia" */
+.kamar-pemesanan-kertu p {
+    text-align: center;
+    margin-bottom: 20px;
+}
