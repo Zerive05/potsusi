@@ -10,7 +10,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 step 3
-php artisan migrate --seed;npm install;composer run dev
+php artisan migrate --seed;composer run dev
 
 
 
