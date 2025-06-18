@@ -5,7 +5,7 @@
     <div class="navbar-center-menu">
         <ul>
             <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li><a href="">Pesan Kamar</a></li> {{-- Pastikan link ini sudah benar --}}
+            <li><a href="{{ route('pesanan') }}">Pesan Saya</a></li> {{-- Pastikan link ini sudah benar --}}
         </ul>
     </div>
     <div class="profile-dropdown">

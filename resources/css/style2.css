@@ -826,160 +826,354 @@ a.location-card-link {
 }
 
 /* pesan */
-/* --- Styling Khusus Form Pemesanan Kamar --- */
-
-/* Gaya dasar untuk "kertu" (card) */
-.kertu {
+.kontener-pesan {
+    min-width: 1280px;
+    max-width: 90%;
+    min-height: 480px;
+    max-height: 780px;
+    margin: 40px auto;
     background-color: #ffffff;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    /* Penting untuk radius jika ada gambar atau elemen lain di dalamnya */
-    margin-bottom: 20px;
-    /* Memberi sedikit jarak antar kartu jika ada beberapa */
+    text-align: left;
 }
 
-/* Gaya untuk "awak-kertu" (card-body) */
-.awak-kertu {
+.kontener-pesan .pesan-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #0080ff;
+    border-radius: 8px;
     padding: 20px;
-    /* Memberikan ruang di dalam card */
-}
-
-/* Gaya spesifik untuk kartu form pemesanan kamar */
-/* Gunakan kelas ini untuk container utama form pemesanan di kamar.blade.php */
-.kamar-pemesanan-kertu {
-    max-width: 600px;
-    /* Batasi lebar kartu form */
-    margin: 40px auto;
-    /* Pusatkan kartu di halaman */
-    border: 1px solid #eee;
-    /* Tambahkan border tipis untuk definisi */
-    background-color: #f9f9f9;
-    /* Latar belakang sedikit berbeda dari kertu umum */
-}
-
-/* Gaya untuk judul di dalam form pemesanan */
-.kamar-pemesanan-kertu h2 {
-    margin-top: 0;
     margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-    /* Pusatkan judul form */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Gaya untuk setiap grup input (label + input) */
+.kontener-pesan .pesan-card .pesan-awak-card {
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.kontener-pesan .pesan-card .pesan-awak-card h2 {
+    color: #0080ff;
+    margin: 10px 0px;
+}
+
+.kontener-pesan .pesan-card .pesan-awak-card .detil1 {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.kontener-pesan .pesan-card .pesan-awak-card .detil1 .detil2 {
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.kontener-pesan .pesan-card .pesan-awak-card .detil1 .detil2 a {
+    font-size: 15px;
+    color: black;
+}
+
+.kontener-pesan .pesan-card .form-pesan {
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* form pemesanan */
+/* Umum untuk semua form */
+form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    /* Warna latar belakang ringan */
+    border: 1px solid #e2e6ea;
+    border-radius: 0.25rem;
+    /* Border radius kecil */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    /* Sedikit bayangan */
+}
+
+/* Grup Form untuk setiap input */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    /* Spasi antar grup input */
 }
 
-/* Gaya untuk label dari setiap input */
+/* Label untuk input */
 .form-group label {
     display: block;
-    /* Membuat label berada di baris terpisah */
-    margin-bottom: 5px;
-    /* Jarak antara label dan input */
-    font-weight: bold;
-    /* Membuat teks label tebal */
-    color: #555;
-    /* Warna teks label */
+    /* Agar label di atas input */
+    margin-bottom: 0.5rem;
+    /* Spasi antara label dan input */
+    font-weight: 600;
+    /* Sedikit lebih tebal */
+    color: #495057;
+    /* Warna teks gelap */
 }
 
-/* Gaya untuk elemen input text, date, dan number */
-.form-control {
+/* Input teks, email, password, textarea, select */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+/* Tambahan untuk input tanggal */
+.form-group textarea,
+.form-group select {
+    display: block;
+    /* Agar setiap input di baris baru */
     width: 100%;
-    /* Lebar input memenuhi container */
-    padding: 10px;
-    /* Padding di dalam input */
-    border: 1px solid #ccc;
-    /* Border abu-abu */
-    border-radius: 5px;
-    /* Sudut membulat */
-    box-sizing: border-box;
-    /* Pastikan padding tidak menambah lebar total elemen */
-    font-size: 1em;
+    /* Lebar penuh parent */
+    padding: 0.375rem 0.75rem;
+    /* Padding standar */
+    font-size: 1rem;
     /* Ukuran font standar */
-    transition: border-color 0.3s ease;
-    /* Transisi halus untuk border saat fokus */
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    /* Border abu-abu */
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    /* Transisi halus saat fokus */
+    box-sizing: border-box;
+    /* Penting untuk padding dan border tidak menambah lebar */
 }
 
-/* Gaya saat input sedang fokus (diklik/diisi) */
-.form-control:focus {
-    border-color: #007bff;
-    /* Warna border biru saat fokus */
-    outline: none;
-    /* Hilangkan outline default browser */
+/* Efek fokus pada input */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="date"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    /* Border biru saat fokus */
+    outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    /* Efek bayangan saat fokus */
+    /* Glow biru saat fokus */
 }
 
-/* Gaya untuk pesan error validasi di bawah input */
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #6c757d;
+    /* Warna placeholder abu-abu */
+    opacity: 1;
+    /* Pastikan opacity penuh */
+}
+
+/* Textarea khusus */
+.form-group textarea {
+    min-height: 80px;
+    /* Tinggi minimum untuk textarea */
+    resize: vertical;
+    /* Hanya izinkan resize vertikal */
+}
+
+/* Checkbox dan Radio Button */
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+    /* Spasi untuk input checkbox/radio */
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-left: -1.25rem;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+/* Tombol (Button) */
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+/* Warna tombol utama */
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    /* Biru */
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    /* Biru lebih gelap saat hover */
+    border-color: #0062cc;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    /* Hijau */
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #218838;
+    /* Hijau lebih gelap saat hover */
+    border-color: #1e7e34;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    /* Merah */
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    color: #fff;
+    background-color: #c82333;
+    /* Merah lebih gelap saat hover */
+    border-color: #bd2130;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    /* Abu-abu */
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #5a6268;
+    /* Abu-abu lebih gelap saat hover */
+    border-color: #545b62;
+}
+
+
+/* Styling untuk pesan error validasi */
 .error-message {
     color: #dc3545;
-    /* Warna merah untuk pesan error */
-    font-size: 0.85em;
+    /* Merah untuk pesan error */
+    font-size: 0.875em;
     /* Ukuran font lebih kecil */
-    margin-top: 5px;
-    /* Jarak dari input ke pesan error */
+    margin-top: 0.25rem;
+    /* Sedikit spasi di atas */
 }
 
-/* Gaya untuk tombol utama (misalnya tombol "Pesan Kamar Ini") */
-.btn.btn-primary {
-    background-color: #007bff;
-    /* Latar belakang biru */
-    color: white;
-    /* Warna teks putih */
-    padding: 10px 20px;
-    /* Padding tombol */
-    border: none;
-    /* Tanpa border */
-    border-radius: 5px;
-    /* Sudut membulat */
+/* Utility classes untuk menyingkirkan margin di form dalam modal, dll. */
+.m-0 {
+    margin: 0 !important;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+/* Password input dengan toggle icon */
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 2.5rem;
+    /* Beri ruang untuk ikon */
+}
+
+.password-input-wrapper .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    /* Kursor berubah menjadi pointer */
-    font-size: 16px;
-    /* Ukuran font */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    /* Transisi hover */
-    margin-top: 20px;
-    /* Jarak dari elemen sebelumnya */
-    display: inline-block;
-    /* Agar padding dan lebar berfungsi dengan baik */
-    text-align: center;
-    /* Pastikan teks di tengah tombol */
+    color: #6c757d;
+    /* Warna ikon */
 }
 
-/* Gaya saat tombol utama di-hover */
-.btn.btn-primary:hover {
-    background-color: #0056b3;
-    /* Warna biru lebih gelap saat hover */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    /* Bayangan sedikit lebih tebal */
+.password-input-wrapper .toggle-password:hover {
+    color: #333;
 }
 
-/* Gaya untuk tombol disabled (misalnya "Kamar Tidak Tersedia") */
-.btn.btn-secondary {
-    background-color: #6c757d;
-    /* Latar belakang abu-abu */
-    color: white;
-    /* Warna teks putih */
-    padding: 10px 20px;
-    /* Padding tombol */
-    border: none;
-    /* Tanpa border */
-    border-radius: 5px;
-    /* Sudut membulat */
-    cursor: not-allowed;
-    /* Kursor "tidak diizinkan" */
-    font-size: 16px;
-    /* Ukuran font */
-    margin-top: 20px;
-    /* Jarak dari elemen sebelumnya */
-    display: inline-block;
-    text-align: center;
+.booking-form {
+    padding: 20px;
+    background-color: #f8f9fa;
+    /* Warna latar belakang formulir */
+    border: 1px solid #e2e6ea;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-top: 30px;
 }
 
-/* Gaya untuk pesan "Maaf, kamar ini tidak tersedia" */
-.kamar-pemesanan-kertu p {
+.booking-form h2 {
     text-align: center;
+    color: #007bff;
     margin-bottom: 20px;
 }
+
+/* Group untuk tanggal yang bersebelahan */
+.date-group {
+    display: flex;
+    gap: 15px;
+    /* Jarak antara input tanggal */
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    /* Agar responsif */
+}
+
+.date-group .form-group {
+    flex: 1;
+    /* Agar kedua input memiliki lebar yang sama */
+    min-width: 200px;
+    /* Lebar minimum agar tidak terlalu sempit */
+    margin-bottom: 0;
+    /* Hapus margin bawah default dari form-group */
+}
+
+.total-price-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e9f7ef;
+    border: 1px solid #c9e9d1;
+    border-radius: 5px;
+}
+
+/* Pastikan CSS form dasar dari Bootstrap-like sudah di style.css atau style2.css */
+/* .form-group, input[type="text"], dll. */

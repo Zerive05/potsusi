@@ -5,8 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\HotelController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +35,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/pesanan', [PesanController::class, 'show'])->name('pesanan');
 
     // kota
     Route::get('/kota/{id}', [KotaController::class, 'show'])->name('kota.show');
@@ -43,6 +45,9 @@ Route::middleware(['auth'])->group(function () {
 
     // pesan kamar
     Route::get('/kamar/{id}', [KamarController::class, 'pesan'])->name('kamar.pesan');
+
+    // pembayaran
+    Route::post('/pesan/{id}', [PesanController::class, 'store'])->name('pesan.store');
 
     // --- Routes untuk Fitur Pesan Kamar ---
     // Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');

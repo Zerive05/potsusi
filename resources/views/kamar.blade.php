@@ -40,7 +40,7 @@
                     <h2 class="hotel-name">{{ $kamar->nama_kamar }}</h2>
                     <p class="hotel-location">Tipe: {{ $kamar->tipe_kamar }}</p>
                     <p class="hotel-location">Kapasitas: {{ $kamar->kapasitas }}</p>
-                    <p class="hotel-rating">Harga: {{ $kamar->harga }} <i class="fas fa-dollar-sign" style="color: green;"></i></p>
+                    <p class="hotel-rating">Harga: Rp{{ number_format($kamar->harga, 0, ',', '.') }} <i class="fas fa-dollar-sign" style="color: green;"></i></p>
 
                     <p class="hotel-fasilitas">Fasilitas:
                         @php

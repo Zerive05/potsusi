@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // kota
-    const kotaSelect = document.querySelector('location-card');
+
 
     //show.blade.php
 

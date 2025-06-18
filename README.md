@@ -1,5 +1,5 @@
 step 1
-git clone https://github.com/Zerive05/potsusi.git;cd potsusi;composer install;copy .env.example .env;php artisan key:generate
+git clone https://github.com/Zerive05/potsusi.git;cd potsusi;composer install;php artisan key:generate;code .
 
 step 2
 DB_CONNECTION=mysql
@@ -10,7 +10,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 step 3
-php artisan migrate:fresh --seed;npm install;code .;composer run dev
+php artisan migrate --seed;npm install;composer run dev
 
 
 
